@@ -187,6 +187,12 @@ img{max-width:100%;height:auto}
     <h3>Classic White Sneakers</h3>
     <p>White • Black • Blue • Grey</p>
     <p class="price">Rs. 3,799</p>
+    <div class="aeon-cart-controls">
+      <select class="color-select product-color" aria-label="Choose color">
+        <option value="White">White</option><option value="Black">Black</option><option value="Blue">Blue</option><option value="Grey">Grey</option>
+      </select>
+      <button class="add-to-cart-btn" onclick='addToCart("Classic White Sneakers", 3799, this.previousElementSibling.value)'>ADD TO CART</button>
+    </div>
   </div>
 </div>
 
@@ -198,16 +204,15 @@ img{max-width:100%;height:auto}
       <button onclick="changeSamba('samba-2.jpeg')"><img src="samba-2.jpeg" alt=""></button>
       <button onclick="changeSamba('samba-3.jpeg')"><img src="samba-3.jpeg" alt=""></button>
     </div>
-<div class="aeon-cart-controls">
-<select class="color-select product-color" aria-label="Choose color"><option value="White">White</option><option value="Black">Black</option><option value="Grey">Grey</option></select>
-<button class="add-to-cart-btn" onclick='addToCart("Adidas Samba", 2499, this.previousElementSibling.value)'>ADD TO CART</button>
-</div>
-
   </div>
   <div class="product-info">
     <h3>Adidas Samba</h3>
     <p>White • Black • Grey</p>
     <p class="price">Rs. 2,499</p>
+    <div class="aeon-cart-controls">
+      <select class="color-select product-color" aria-label="Choose color"><option value="White">White</option><option value="Black">Black</option><option value="Grey">Grey</option></select>
+      <button class="add-to-cart-btn" onclick='addToCart("Adidas Samba", 2499, this.previousElementSibling.value)'>ADD TO CART</button>
+    </div>
   </div>
 </div>
 
@@ -224,6 +229,12 @@ img{max-width:100%;height:auto}
     <h3>Skechers Go Walk</h3>
     <p>Brown • Black • Grey</p>
     <p class="price">Rs. 3,499</p>
+    <div class="aeon-cart-controls">
+      <select class="color-select product-color" aria-label="Choose color">
+        <option value="Brown">Brown</option><option value="Black">Black</option><option value="Grey">Grey</option>
+      </select>
+      <button class="add-to-cart-btn" onclick='addToCart("Skechers Go Walk", 3499, this.previousElementSibling.value)'>ADD TO CART</button>
+    </div>
   </div>
 </div>
 
@@ -261,7 +272,7 @@ img{max-width:100%;height:auto}
 </footer>
 
 <script>
-function showCart(){alert("Your cart is currently empty.\n\nProduct ordering will be added in the next step.");}
+function showCart(){openCart();}
 function searchProduct(){let product=prompt("What are you looking for?");if(product){alert("Searching for: "+product);}}
 
 function changeShoe3(imageName){
@@ -316,7 +327,7 @@ function removeItem(i){aeonCart.splice(i,1);saveCart();renderCart();}
 function escapeHtml(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
 function renderCart(){
  const box=document.getElementById("cartItems"),count=document.getElementById("cartCount"),totalEl=document.getElementById("cartTotal");if(!box)return;
- const q=aeonCart.reduce((s,x)=>s+x.qty,0),t=aeonCart.reduce((s,x)=>s+x.price*x.qty,0);count.textContent=q;totalEl.textContent="Total: Rs. "+t.toLocaleString("en-PK");
+ const q=aeonCart.reduce((s,x)=>s+x.qty,0),t=aeonCart.reduce((s,x)=>s+x.price*x.qty,0);count.textContent=q;document.querySelectorAll(".actions .icon-btn").forEach(b=>{if((b.textContent||"").toLowerCase().includes("cart"))b.textContent="CART ("+q+")";});totalEl.textContent="Total: Rs. "+t.toLocaleString("en-PK");
  if(!aeonCart.length){box.innerHTML='<div class="cart-empty">Your cart is empty.</div>';return;}
  box.innerHTML=aeonCart.map((x,i)=>`<div class="cart-item"><div class="cart-item-top"><div><div class="cart-item-name">${escapeHtml(x.name)}</div><div class="cart-meta">Color: ${escapeHtml(x.color)}</div></div><div class="cart-item-price">Rs. ${(x.price*x.qty).toLocaleString("en-PK")}</div></div><div class="qty-row"><button class="qty-btn" onclick="changeQty(${i},-1)">−</button><strong>${x.qty}</strong><button class="qty-btn" onclick="changeQty(${i},1)">+</button><button class="remove-btn" onclick="removeItem(${i})">Remove</button></div></div>`).join("");
 }
