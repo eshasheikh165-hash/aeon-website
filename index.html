@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AEON — Fashion & Footwear</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;color:#111;background:#fff;line-height:1.5}
+a{text-decoration:none;color:inherit}
+.topbar{background:#000;color:#fff;text-align:center;padding:9px;font-size:12px;letter-spacing:1.5px}
+header{position:sticky;top:0;z-index:20;background:#000;border-bottom:1px solid #222}
+.nav{max-width:1200px;margin:auto;min-height:78px;padding:10px 24px;display:flex;align-items:center;gap:28px}
+.logo-link{display:flex;align-items:center;margin-right:auto}
+.logo-img{display:block;width:145px;height:58px;object-fit:contain;object-position:center}
+.nav-links{display:flex;gap:26px;color:#fff;font-size:13px;font-weight:700;letter-spacing:1px}
+.nav-links a:hover{opacity:.6}
+.actions{display:flex;gap:10px}
+.icon-btn{border:1px solid #fff;background:#000;color:#fff;padding:10px 13px;cursor:pointer;font-size:12px}
+.hero{min-height:610px;background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.2)),url("https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1800&q=85") center/cover;display:flex;align-items:center}
+.hero-content{max-width:1200px;width:100%;margin:auto;padding:60px 24px;color:#fff}
+.kicker{font-size:13px;letter-spacing:3px;font-weight:700;margin-bottom:16px}
+.hero h1{font-size:clamp(55px,9vw,105px);line-height:.9;letter-spacing:-4px;max-width:800px}
+.hero p{font-size:18px;letter-spacing:2px;margin:25px 0 30px}
+.btn{display:inline-block;background:#fff;color:#000;padding:15px 25px;font-size:12px;font-weight:800;letter-spacing:1.5px;border:1px solid #fff}
+.btn.dark{background:#000;color:#fff;border-color:#000}
+.section{max-width:1200px;margin:auto;padding:90px 24px}
+.section-title{text-align:center;margin-bottom:42px}
+.section-title span{font-size:12px;letter-spacing:3px;font-weight:700}
+.section-title h2{font-size:38px;margin-top:8px;letter-spacing:-1px}
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.category{height:390px;background-size:cover;background-position:center;position:relative;overflow:hidden}
+.category:nth-child(1){background-image:linear-gradient(#0002,#0007),url("https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=80")}
+.category:nth-child(2){background-image:linear-gradient(#0002,#0007),url("https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=80")}
+.category:nth-child(3){background-image:linear-gradient(#0002,#0007),url("https://images.unsplash.com/photo-1523381294911-8d3cead13475?auto=format&fit=crop&w=1000&q=80")}
+.category-content{position:absolute;bottom:28px;left:28px;color:#fff}
+.category h3{font-size:30px;margin-bottom:8px}
+.category a{font-size:12px;font-weight:700;letter-spacing:1px;border-bottom:1px solid #fff;padding-bottom:4px}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product-img{height:310px;background:#f2f2f2 center/cover no-repeat}
+.p1{background-image:url("https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80")}
+.p2{background-image:url("https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80")}
+.p3{background-image:url("https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=800&q=80")}
+.p4{background-image:url("https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80")}
+.product-info{padding:14px 2px}
+.product-info h3{font-size:15px;margin-bottom:5px}
+.product-info p{font-size:13px;color:#666}
+.price{font-weight:800;color:#111!important;margin-top:7px}
+.about{background:#f5f5f5}
+.about-grid{max-width:1200px;margin:auto;padding:90px 24px;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.about-image{height:500px;background:url("https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=1200&q=85") center/cover}
+.about-text span{font-size:11px;letter-spacing:3px;font-weight:700}
+.about-text h2{font-size:48px;line-height:1;margin:12px 0 20px}
+.about-text p{color:#555;max-width:520px;margin-bottom:24px}
+.cta{background:#000;color:#fff;text-align:center;padding:85px 24px}
+.cta h2{font-size:46px;margin-bottom:12px}
+.cta p{color:#bbb;margin-bottom:28px}
+footer{background:#111;color:#fff;padding:55px 24px 25px}
+.footer-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.footer-brand h3{font-size:25px;letter-spacing:2px}
+.footer-brand p{color:#999;max-width:330px;margin-top:12px;font-size:14px}
+footer h4{font-size:12px;letter-spacing:2px;margin-bottom:16px}
+footer a{display:block;color:#aaa;font-size:13px;margin:9px 0}
+.copyright{max-width:1200px;margin:45px auto 0;padding-top:18px;border-top:1px solid #333;color:#777;font-size:12px}
+
+.shoe-gallery{background:#f7f7f7;padding:0 0 12px}
+.shoe-gallery>img{display:block;width:100%;height:310px;object-fit:cover}
+.shoe-thumbs{display:flex;gap:8px;padding:10px 10px 0}
+.shoe-thumbs button{border:1px solid #ddd;background:#fff;padding:0;cursor:pointer;width:70px;height:58px;overflow:hidden}
+.shoe-thumbs button:hover{border-color:#111}
+.shoe-thumbs img{width:100%;height:100%;object-fit:cover}
+
+@media(max-width:850px){
+.nav{flex-wrap:wrap}.nav-links{order:3;width:100%;justify-content:center;gap:16px;overflow:auto}.actions{margin-left:0}
+.categories{grid-template-columns:1fr}.products{grid-template-columns:repeat(2,1fr)}
+.about-grid{grid-template-columns:1fr;gap:35px}.about-image{height:360px}.hero{min-height:560px}
+}
+@media(max-width:520px){
+.nav{padding:10px 15px}.logo-img{width:125px;height:50px}.nav-links{font-size:11px}
+.products{grid-template-columns:1fr}.product-img{height:380px}
+.hero h1{letter-spacing:-2px}.section,.about-grid{padding:65px 18px}
+.about-text h2,.cta h2{font-size:36px}.footer-grid{grid-template-columns:1fr}
+}
+
+/* AEON Cart & WhatsApp Order System */
+.cart-panel{position:fixed;top:0;right:-430px;width:min(430px,100%);height:100vh;background:#fff;z-index:9999;box-shadow:-10px 0 30px rgba(0,0,0,.18);transition:right .3s ease;display:flex;flex-direction:column}
+.cart-panel.open{right:0}.cart-head{display:flex;align-items:center;justify-content:space-between;padding:20px;border-bottom:1px solid #ddd;background:#000;color:#fff}
+.cart-head h3{margin:0;font-size:20px}.cart-close{background:none;border:0;color:#fff;font-size:28px;cursor:pointer}.cart-body{padding:18px;overflow:auto;flex:1}
+.cart-item{border-bottom:1px solid #e5e5e5;padding:14px 0}.cart-item-top{display:flex;justify-content:space-between;gap:12px}
+.cart-item-name{font-weight:700}.cart-item-price{font-weight:700}.cart-meta{font-size:13px;color:#666;margin-top:5px}
+.qty-row{display:flex;align-items:center;gap:8px;margin-top:10px}.qty-btn{width:30px;height:30px;border:1px solid #bbb;background:#fff;cursor:pointer}
+.remove-btn{border:0;background:none;text-decoration:underline;cursor:pointer;margin-left:auto}.cart-empty{padding:30px 5px;text-align:center;color:#666}
+.cart-total{font-size:19px;font-weight:800;text-align:right;margin:18px 0}.checkout-box{border-top:1px solid #ddd;padding-top:15px}
+.checkout-box input,.checkout-box textarea,.checkout-box select{width:100%;box-sizing:border-box;padding:12px;margin:7px 0;border:1px solid #ccc;font:inherit}
+.checkout-box textarea{min-height:80px;resize:vertical}.whatsapp-order{width:100%;border:0;background:#111;color:#fff;padding:14px;font-weight:800;cursor:pointer;margin-top:8px}
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9998;display:none}.cart-overlay.show{display:block}
+.add-to-cart-btn{width:100%;border:0;background:#000;color:#fff;padding:12px 15px;font-weight:700;cursor:pointer;margin-top:10px}
+.color-select{width:100%;padding:10px;border:1px solid #ccc;background:#fff;margin-top:8px}
+.cart-badge{display:inline-flex;min-width:18px;height:18px;padding:0 5px;align-items:center;justify-content:center;border-radius:20px;background:#fff;color:#000;font-size:11px;font-weight:800;margin-left:4px;vertical-align:middle}
+
+
+/* AEON mobile-ready improvements */
+html{scroll-behavior:smooth}
+body{overflow-x:hidden}
+img{max-width:100%;height:auto}
+@media (max-width: 768px){
+  header nav, .nav-links{gap:12px!important}
+  header{padding-left:14px!important;padding-right:14px!important}
+  header nav a{font-size:12px!important}
+  .hero{min-height:70vh!important;padding:80px 20px!important}
+  .hero h1{font-size:clamp(42px,12vw,72px)!important;line-height:.95!important}
+  .hero p{font-size:16px!important}
+  .products-grid,.product-grid,.shop-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}
+  .product-card{min-width:0!important}
+  .product-card h3{font-size:15px!important}
+  .product-card p{font-size:13px!important}
+  .add-to-cart-btn{font-size:12px!important;padding:11px 7px!important}
+  .color-select{font-size:12px!important}
+  .cart-panel{width:100%!important;right:-100%!important}
+  .cart-panel.open{right:0!important}
+}
+@media (max-width: 480px){
+  .products-grid,.product-grid,.shop-grid{grid-template-columns:1fr 1fr!important}
+  .hero{min-height:62vh!important}
+  .hero h1{font-size:43px!important}
+  .hero .btn,.hero a{padding:12px 18px!important}
+  .cart-body{padding:14px!important}
+}
+
+</style>
+</head>
+<body>
+
+<div class="topbar">PAKISTAN • EASY ORDERING • NEW DROPS EVERY SEASON</div>
+
+<header>
+<nav class="nav">
+<a class="logo-link" href="#home"><img src="aeon-logo.png" alt="AEON" class="logo-img"></a>
+<div class="nav-links">
+<a href="#home">HOME</a>
+<a href="#shop">SHOP</a>
+<a href="#categories">CATEGORIES</a>
+<a href="#about">ABOUT</a>
+<a href="#contact">CONTACT</a>
+</div>
+<div class="actions">
+<button class="icon-btn" onclick="searchProduct()">SEARCH</button>
+<button class="icon-btn" onclick="showCart()">CART (0)</button>
+</div>
+</nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+<div class="hero-content">
+<div class="kicker">AEON</div>
+<h1>STYLE<br>THAT MOVES.</h1>
+<p>SHOES. EVERYDAY STYLE.</p>
+<a class="btn" href="#shop">SHOP NOW</a>
+</div>
+</section>
+
+<section class="section" id="categories">
+<div class="section-title"><span>SHOP BY CATEGORY</span><h2>Find Your Style</h2></div>
+<div class="categories">
+<div class="category"><div class="category-content"><h3>Shoes</h3><a href="#shop">SHOP SHOES →</a></div></div>
+</div>
+</section>
+
+<section class="section" id="shop">
+<div class="section-title"><span>AEON COLLECTION</span><h2>Latest Arrivals</h2></div>
+
+
+<div class="products">
+
+<div class="product-card">
+  <div class="shoe-gallery">
+    <img id="shoeMain" src="shoe-1.jpeg" alt="Classic White Sneakers">
+    <div class="shoe-thumbs">
+      <button onclick="changeShoe('shoe-1.jpeg')"><img src="shoe-1.jpeg" alt=""></button>
+      <button onclick="changeShoe('shoe-2.jpeg')"><img src="shoe-2.jpeg" alt=""></button>
+      <button onclick="changeShoe('shoe-3.jpeg')"><img src="shoe-3.jpeg" alt=""></button>
+    </div>
+  </div>
+  <div class="product-info">
+    <h3>Classic White Sneakers</h3>
+    <p>White • Black • Blue • Grey</p>
+    <p class="price">Rs. 3,799</p>
+  </div>
+</div>
+
+<div class="product-card">
+  <div class="shoe-gallery">
+    <img id="sambaMain" src="samba-1.jpeg" alt="Adidas Samba">
+    <div class="shoe-thumbs">
+      <button onclick="changeSamba('samba-1.jpeg')"><img src="samba-1.jpeg" alt=""></button>
+      <button onclick="changeSamba('samba-2.jpeg')"><img src="samba-2.jpeg" alt=""></button>
+      <button onclick="changeSamba('samba-3.jpeg')"><img src="samba-3.jpeg" alt=""></button>
+    </div>
+<div class="aeon-cart-controls">
+<select class="color-select product-color" aria-label="Choose color"><option value="White">White</option><option value="Black">Black</option><option value="Grey">Grey</option></select>
+<button class="add-to-cart-btn" onclick='addToCart("Adidas Samba", 2499, this.previousElementSibling.value)'>ADD TO CART</button>
+</div>
+
+  </div>
+  <div class="product-info">
+    <h3>Adidas Samba</h3>
+    <p>White • Black • Grey</p>
+    <p class="price">Rs. 2,499</p>
+  </div>
+</div>
+
+<div class="product-card">
+  <div class="shoe-gallery">
+    <img id="shoe3Main" src="shoe-3a.jpeg" alt="Skechers Go Walk">
+    <div class="shoe-thumbs">
+      <button onclick="changeShoe3('shoe-3a.jpeg')"><img src="shoe-3a.jpeg" alt=""></button>
+      <button onclick="changeShoe3('shoe-3b.jpeg')"><img src="shoe-3b.jpeg" alt=""></button>
+      <button onclick="changeShoe3('shoe-3c.jpeg')"><img src="shoe-3c.jpeg" alt=""></button>
+    </div>
+  </div>
+  <div class="product-info">
+    <h3>Skechers Go Walk</h3>
+    <p>Brown • Black • Grey</p>
+    <p class="price">Rs. 3,499</p>
+  </div>
+</div>
+
+</div>
+
+</section>
+
+<section class="about" id="about">
+<div class="about-grid">
+<div class="about-image"></div>
+<div class="about-text">
+<span>ABOUT AEON</span>
+<h2>YOUR STYLE.<br>YOUR MOVE.</h2>
+<p>AEON is a fashion and lifestyle store bringing together clothing, shoes and everyday accessories for a clean, modern look. Discover pieces made for your everyday style.</p>
+<a class="btn dark" href="#shop">EXPLORE COLLECTION</a>
+</div>
+</div>
+</section>
+
+<section class="cta" id="contact">
+<h2>FIND YOUR NEXT LOOK.</h2>
+<p>Explore AEON's latest clothing, shoes and accessories.</p>
+<a class="btn" href="#shop">SHOP AEON</a>
+</section>
+</main>
+
+<footer>
+<div class="footer-grid">
+<div class="footer-brand"><h3>AEON</h3><p>Modern clothing, shoes and accessories for everyday style.</p></div>
+<div><h4>SHOP</h4><a href="#shop">All Shoes</a><a href="#categories">Shoes</a></div>
+<div><h4>INFORMATION</h4><a href="#about">About Us</a><a href="#contact">Contact</a><a href="#">Delivery</a><a href="#">Returns</a></div>
+<div><h4>CONNECT</h4><a href="https://instagram.com/" target="_blank">Instagram</a><a href="https://wa.me/923000000000" target="_blank">WhatsApp</a><a href="mailto:hello@aeonfit.com">Email</a></div>
+</div>
+<div class="copyright">© 2026 AEON. All Rights Reserved.</div>
+</footer>
+
+<script>
+function showCart(){alert("Your cart is currently empty.\n\nProduct ordering will be added in the next step.");}
+function searchProduct(){let product=prompt("What are you looking for?");if(product){alert("Searching for: "+product);}}
+
+function changeShoe3(imageName){
+  document.getElementById("shoe3Main").src=imageName;
+}
+
+function changeSamba(imageName){
+  document.getElementById("sambaMain").src=imageName;
+}
+
+function changeShoe(imageName){
+  document.getElementById("shoeMain").src=imageName;
+}
+</script>
+
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<aside class="cart-panel" id="cartPanel" aria-label="Shopping cart">
+  <div class="cart-head"><h3>Your Cart <span class="cart-badge" id="cartCount">0</span></h3><button class="cart-close" onclick="closeCart()">&times;</button></div>
+  <div class="cart-body">
+    <div id="cartItems"></div>
+    <div class="cart-total" id="cartTotal">Total: Rs. 0</div>
+    <div class="checkout-box">
+      <h3>Order Details</h3>
+      <input id="customerName" type="text" placeholder="Your name">
+      <input id="customerPhone" type="tel" placeholder="Your phone number">
+      <textarea id="customerAddress" placeholder="Delivery address"></textarea>
+      <select id="customerCity">
+        <option value="">Select city (optional)</option><option>Karachi</option><option>Lahore</option><option>Islamabad</option><option>Rawalpindi</option><option>Faisalabad</option><option>Multan</option><option>Peshawar</option><option>Quetta</option><option>Other</option>
+      </select>
+      
+<div class="cod-payment-box" style="margin:10px 0 14px;padding:12px;border:1px solid #ddd;background:#fafafa">
+  <strong>Payment Method</strong>
+  <label style="display:flex;align-items:center;gap:8px;margin-top:9px;cursor:pointer">
+    <input type="radio" name="paymentMethod" value="Cash on Delivery" checked>
+    <span>Cash on Delivery (COD)</span>
+  </label>
+</div>
+
+<button class="whatsapp-order" onclick="sendWhatsAppOrder()">ORDER ON WHATSAPP</button>
+    </div>
+  </div>
+</aside>
+
+
+<script>
+const AEON_WHATSAPP = "923222874348";
+let aeonCart = JSON.parse(localStorage.getItem("aeonCart") || "[]");
+function saveCart(){localStorage.setItem("aeonCart",JSON.stringify(aeonCart));}
+function addToCart(name,price,color){const e=aeonCart.find(x=>x.name===name&&x.color===color);if(e)e.qty++;else aeonCart.push({name,price,color,qty:1});saveCart();renderCart();openCart();}
+function changeQty(i,a){if(!aeonCart[i])return;aeonCart[i].qty+=a;if(aeonCart[i].qty<=0)aeonCart.splice(i,1);saveCart();renderCart();}
+function removeItem(i){aeonCart.splice(i,1);saveCart();renderCart();}
+function escapeHtml(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));}
+function renderCart(){
+ const box=document.getElementById("cartItems"),count=document.getElementById("cartCount"),totalEl=document.getElementById("cartTotal");if(!box)return;
+ const q=aeonCart.reduce((s,x)=>s+x.qty,0),t=aeonCart.reduce((s,x)=>s+x.price*x.qty,0);count.textContent=q;totalEl.textContent="Total: Rs. "+t.toLocaleString("en-PK");
+ if(!aeonCart.length){box.innerHTML='<div class="cart-empty">Your cart is empty.</div>';return;}
+ box.innerHTML=aeonCart.map((x,i)=>`<div class="cart-item"><div class="cart-item-top"><div><div class="cart-item-name">${escapeHtml(x.name)}</div><div class="cart-meta">Color: ${escapeHtml(x.color)}</div></div><div class="cart-item-price">Rs. ${(x.price*x.qty).toLocaleString("en-PK")}</div></div><div class="qty-row"><button class="qty-btn" onclick="changeQty(${i},-1)">−</button><strong>${x.qty}</strong><button class="qty-btn" onclick="changeQty(${i},1)">+</button><button class="remove-btn" onclick="removeItem(${i})">Remove</button></div></div>`).join("");
+}
+function openCart(){document.getElementById("cartPanel")?.classList.add("open");document.getElementById("cartOverlay")?.classList.add("show");}
+function closeCart(){document.getElementById("cartPanel")?.classList.remove("open");document.getElementById("cartOverlay")?.classList.remove("show");}
+function sendWhatsAppOrder(){
+ if(!aeonCart.length){alert("Please add a product to your cart first.");return;}
+ const name=document.getElementById("customerName").value.trim(),phone=document.getElementById("customerPhone").value.trim(),address=document.getElementById("customerAddress").value.trim(),city=document.getElementById("customerCity").value.trim();
+ if(!name||!phone||!address){alert("Please fill in your name, phone number and delivery address.");return;}
+ const total=aeonCart.reduce((s,x)=>s+x.price*x.qty,0);
+ let m="Assalam o Alaikum AEON!%0A%0A*NEW ORDER*%0A--------------------%0A";
+ aeonCart.forEach((x,i)=>{m+=`${i+1}. ${x.name}%0AColor: ${x.color}%0AQty: ${x.qty}%0APrice: Rs. ${(x.price*x.qty).toLocaleString("en-PK")}%0A%0A`;});
+ m+=`*TOTAL: Rs. ${total.toLocaleString("en-PK")}*%0APayment: Cash on Delivery (COD)%0A%0A*CUSTOMER DETAILS*%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AAddress: ${encodeURIComponent(address)}%0A`;
+ if(city)m+=`City: ${encodeURIComponent(city)}%0A`;
+ window.open(`https://wa.me/${AEON_WHATSAPP}?text=${m}`,"_blank");
+}
+document.addEventListener("DOMContentLoaded",()=>{renderCart();document.querySelectorAll("a,button").forEach(el=>{const t=(el.textContent||"").trim().toLowerCase();if(t==="cart"||t.includes("cart"))el.addEventListener("click",function(e){if(!this.classList.contains("add-to-cart-btn")){e.preventDefault();openCart();}});});});
+</script>
+
+
+<div class="mobile-shopping-note" style="display:none">
+  <span>🛍️</span> Add your favorite shoes to cart and order on WhatsApp.
+</div>
+
+</body>
+</html>
