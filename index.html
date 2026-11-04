@@ -252,7 +252,7 @@ img{max-width:100%;height:auto}
   <div class="product-info">
     <h3>Air Jordan 1 Low Dior</h3>
     <p>Grey • Black • Brown with Cream</p>
-    <p class="price">Price: PKR 3,999</p>
+    <p class="price">Rs. 3,999</p>
     <div class="aeon-cart-controls">
       <select class="color-select product-color dior-color" aria-label="Choose color">
         <option value="Grey and Cream">Grey and Cream</option>
@@ -263,6 +263,31 @@ img{max-width:100%;height:auto}
         <option value="">Select size</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option><option>45</option>
       </select>
       <button class="add-to-cart-btn" onclick='addProductToCart("Air Jordan 1 Low Dior",3999,this)'>ADD TO CART</button>
+    </div>
+  </div>
+</div>
+
+<div class="product-card">
+  <div class="shoe-gallery">
+    <img id="airJordanLowMain" src="air-jordan-low-1.jpeg" alt="Air Jordan 1 Low - Black and White">
+    <div class="shoe-thumbs">
+      <button onclick="changeAirJordanLow('air-jordan-low-1.jpeg')"><img src="air-jordan-low-1.jpeg" alt="Black and white"></button>
+      <button onclick="changeAirJordanLow('air-jordan-low-2.jpeg')"><img src="air-jordan-low-2.jpeg" alt="Black, white, grey and navy color options"></button>
+    </div>
+  </div>
+  <div class="product-info">
+    <h3>Air Jordan 1 Low</h3>
+    <p>Black • White • Grey • Navy</p>
+    <p class="price">Rs. 3,799</p>
+    <div class="aeon-cart-controls">
+      <select class="color-select product-color" aria-label="Choose color">
+        <option value="Black and White">Black and White</option>
+        <option value="Grey, White and Navy">Grey, White and Navy</option>
+      </select>
+      <select class="color-select product-size" aria-label="Choose shoe size">
+        <option value="">Select size</option><option>40</option><option>41</option><option>42</option><option>43</option><option>44</option><option>45</option>
+      </select>
+      <button class="add-to-cart-btn" onclick='addProductToCart("Air Jordan 1 Low",3799,this)'>ADD TO CART</button>
     </div>
   </div>
 </div>
@@ -304,6 +329,10 @@ img{max-width:100%;height:auto}
 <script>
 function showCart(){openCart();}
 function searchProduct(){let product=prompt("What are you looking for?");if(product){alert("Searching for: "+product);}}
+
+function changeAirJordanLow(imageName){
+  document.getElementById("airJordanLowMain").src=imageName;
+}
 
 function changeDior(imageName){
   document.getElementById("diorMain").src=imageName;
